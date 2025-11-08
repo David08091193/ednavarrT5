@@ -2,69 +2,103 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ednavarrT5.Views.vPersona"
-             Title="vPersona">
+             Title="Gestión de Personas">
+
     <VerticalStackLayout
         Padding="20"
-        Spacing="20">
+        Spacing="15">
 
+        <!-- Encabezado -->
         <Label 
-            Text="SEMANA 5 BASE DE DATOS LOCALES SQLITE!"
-            VerticalOptions="Center" 
+            Text="SEMANA 5 - BASE DE DATOS LOCALES SQLITE"
             FontSize="18"
+            FontAttributes="Bold"
             TextColor="Blue"
             HorizontalOptions="Center" />
 
-        <Entry x:Name="txtNombre" Placeholder="Ingresa el nombre"/>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <!-- Campo para ID -->
+        <Entry x:Name="txtId"
+               Placeholder="Ingrese el ID (para actualizar o eliminar)"
+               Keyboard="Numeric"
+               HorizontalOptions="Fill" />
 
+        <!-- Campo para Nombre -->
+        <Entry x:Name="txtNombre"
+               Placeholder="Ingrese el nombre"
+               HorizontalOptions="Fill" />
+
+        <!-- Contenedor de botones -->
+        <Grid ColumnSpacing="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Botón Agregar -->
             <Button x:Name="btnAgregar"
                     Text="Agregar Persona"
                     Clicked="btnAgregar_Clicked"
                     Grid.Row="0"
-                    Grid.Column="0"/>
-            <Label x:Name="lblMensaje"
-                     Grid.Row="1"
-                     Grid.Column="0"/>
+                    BackgroundColor="#4CAF50"
+                    TextColor="White" />
+
+            <!-- Botón Listar -->
             <Button x:Name="btnListar"
                     Text="Listar Personas"
                     Clicked="btnListar_Clicked"
+                    Grid.Row="1"
+                    BackgroundColor="#2196F3"
+                    TextColor="White" />
+
+            <!-- Botón Actualizar -->
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar Persona"
+                    Clicked="btnActualizar_Clicked"
                     Grid.Row="2"
-                    Grid.Column="0"/>
+                    BackgroundColor="#FFC107"
+                    TextColor="Black" />
+
+            <!-- Botón Eliminar -->
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar Persona"
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="3"
+                    BackgroundColor="#F44336"
+                    TextColor="White" />
+
+            <!-- Mensaje -->
+            <Label x:Name="lblMensaje"
+                   Grid.Row="4"
+                   FontSize="14"
+                   TextColor="DarkBlue"
+                   HorizontalOptions="Center" />
+
+            <!-- Lista de personas -->
             <CollectionView x:Name="ListaPersonas"
-                            Grid.Row="4"
-                            Grid.Column="0">
+                            Grid.Row="5">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <Grid Padding="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Id}"
-                                   Grid.Row="0"
-                                   Grid.Column="0"/>
-                            <Label Text="{Binding Nombre}"
-                                      Grid.Row="0"
-                                      Grid.Column="1"/>
+                            <Label Text="{Binding Id}" 
+                                   Grid.Column="0"
+                                   TextColor="Black" 
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Nombre}" 
+                                   Grid.Column="1"
+                                   TextColor="Gray" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-
-
 
     </VerticalStackLayout>
 </ContentPage>

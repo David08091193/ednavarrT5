@@ -80,9 +80,55 @@ namespace ednavarrT5.Utils
 
         //Eliminar
 
+        public void DeletePerson(int id)
+        {
+            int result = 0;
+            try
+            {
+                init();
 
-        //update
+                // Busca la persona por ID
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("No se encontró la persona con ese ID");
 
+                result = conn.Delete(person);
+                mensaje = string.Format("Se ha eliminado {0} registro(s)", result);
+            }
+            catch (Exception ex)
+            {
+                mensaje = string.Format("Error: {0}", ex.Message);
+            }
+        }
 
+        //ACTUALIZAR
+        public void UpdatePerson(int id, string nuevoNombre)
+        {
+            int result = 0;
+            try
+            {
+                init();
+
+                // Busca la persona
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("No se encontró la persona con ese ID");
+
+                if (string.IsNullOrEmpty(nuevoNombre))
+                    throw new Exception("El nombre no puede estar vacío");
+
+                // Actualiza y guarda
+                person.Nombre = nuevoNombre;
+                result = conn.Update(person);
+                mensaje = string.Format("Se ha actualizado {0} registro(s)", result);
+            }
+            catch (Exception ex)
+            {
+                mensaje = string.Format("Error: {0}", ex.Message);
+            }
+        }
     }
 }
+
+    
+
