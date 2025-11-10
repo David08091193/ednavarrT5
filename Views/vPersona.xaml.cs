@@ -8,7 +8,7 @@ namespace ednavarrT5.Views
         {
             InitializeComponent();
         }
-        //BOTON AGREGAR
+        // <!-- Botón Agregar -->
         private void btnAgregar_Clicked(object sender, EventArgs e)
         {
            
@@ -16,7 +16,7 @@ namespace ednavarrT5.Views
             App.personRepository.AddNewPerson(txtNombre.Text);
             lblMensaje.Text = App.personRepository.mensaje;
         }
-        //BOTON LISTAR
+        // <!-- Botón Listar -->
         private void btnListar_Clicked(object sender, EventArgs e)
         {
          
@@ -27,14 +27,14 @@ namespace ednavarrT5.Views
 
         }
 
-        //BOTÓN ACTUALIZAR
+        //// <!-- Botón Actualizar -->
         private void btnActualizar_Clicked(object sender, EventArgs e)
         {
             lblMensaje.Text = "";
 
             try
             {
-                // Validamos que el ID no esté vacío
+                // Validamos que el ID creado no esté vacío
                 if (string.IsNullOrEmpty(txtId.Text))
                 {
                     lblMensaje.Text = "Debe ingresar un ID válido para actualizar.";
@@ -52,7 +52,7 @@ namespace ednavarrT5.Views
                 lblMensaje.Text = $"Error: {ex.Message}";
             }
         }
-        //BOTÓN ELIMINAR
+        //// <!-- Botón Eliminar -->
         private void btnEliminar_Clicked(object sender, EventArgs e)
         {
             lblMensaje.Text = "";

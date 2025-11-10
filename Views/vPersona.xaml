@@ -8,7 +8,7 @@
         Padding="20"
         Spacing="15">
 
-        <!-- Encabezado -->
+        <!-- Encabezado TITULO-->
         <Label 
             Text="SEMANA 5 - BASE DE DATOS LOCALES SQLITE"
             FontSize="18"
@@ -16,7 +16,7 @@
             TextColor="Blue"
             HorizontalOptions="Center" />
 
-        <!-- Campo para ID -->
+        <!-- Creacion de campo para un ID -->
         <Entry x:Name="txtId"
                Placeholder="Ingrese el ID (para actualizar o eliminar)"
                Keyboard="Numeric"
@@ -102,3 +102,4 @@
 
     </VerticalStackLayout>
 </ContentPage>
+
